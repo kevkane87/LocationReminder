@@ -138,6 +138,9 @@ class RemindersActivityTest :
         onView(withId(R.id.reminderTitle)).perform(typeText("TITLE1"), closeSoftKeyboard())
         onView(withId(R.id.reminderDescription)).perform(typeText("DESC1"), closeSoftKeyboard())
         onView(withId(R.id.selectLocation)).perform(click())
+
+        onView(withId(com.google.android.material.R.id.snackbar_action)).perform(click())
+
         onView(withId(R.id.map)).perform(longClick())
         onView(withId(R.id.button_save)).perform(click())
         onView(withId(R.id.saveReminder)).perform(click())

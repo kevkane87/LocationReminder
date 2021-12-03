@@ -83,7 +83,9 @@ class SaveReminderFragment : BaseFragment() {
             registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { result ->
                 if (result.all { result -> result.value!! }) {
                     //granted
+                    checkPermissionsAndStartGeofencing()
                     Log.d(TAG, "Permission Granted")
+
                 } else {
                     //not granted
                     Snackbar.make(
@@ -104,7 +106,8 @@ class SaveReminderFragment : BaseFragment() {
         activityResultLauncherLocation =
             registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { result ->
             if (result.resultCode == RESULT_OK) {
-                checkDeviceLocationSettingsAndStartGeofence()
+                addGeofenceForReminder()
+               // checkDeviceLocationSettingsAndStartGeofence()
             }
         }
 
